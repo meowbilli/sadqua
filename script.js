@@ -1,13 +1,18 @@
 var audio = new Audio('song1.mp3');
-audio.loop = true; // Set the loop attribute to true to play the audio in a loop
-audio.play();
+audio.loop = true;
+var isPlaying = false;
 
-// You can also use the 'ended' event to restart the audio when it finishes
-audio.addEventListener('ended', function() {
-    audio.currentTime = 0; // Reset the audio to the beginning
-    audio.play();
+document.getElementById('button1').addEventListener('click', function() {
+    if (!isPlaying) {
+        audio.play();
+        isPlaying = true;
+    }
 });
 
+audio.addEventListener('ended', function() {
+    audio.currentTime = 0;
+    audio.play();
+});
 
 var messages = [
     "Just in case you need to know, I fall in love with you a little bit more Little bit, little bit, a little bit more",
